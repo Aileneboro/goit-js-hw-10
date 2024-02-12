@@ -38,10 +38,6 @@ input:active {
   border: 1px solid #4e75ff;
 }
 
-input:disabled {
-  border: 1px solid #808080;
-}
-
 button {
   display: inline-flex;
   padding: 8px 16px;
