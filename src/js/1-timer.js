@@ -56,10 +56,6 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(countdownInterval);
-  resetTimer();
-}
-
-function resetTimer() {
   daysElement.textContent = '00';
   hoursElement.textContent = '00';
   minutesElement.textContent = '00';
