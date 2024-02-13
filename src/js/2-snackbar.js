@@ -6,21 +6,25 @@ const form = document.querySelector('.form');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  const delayInput = this.elements['delay'];
-  const stateInput = this.elements['state'];
-  const state = stateInput.value;
+  const delayInput = form.elements['delay'];
+  const stateInput = form.elements['state'];
+  let state;
+  for (const radio of stateInput) {
+    if (radio.checked) {
+      state = radio.value;
+      break;
+    }
+  }
   const delay = delayInput.value;
 
   const notificationPromise = new Promise((resolve, reject) => {
-    if (state === 'fulfilled') {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (state === 'fulfilled') {
         resolve(delay);
-      }, delay);
-    } else {
-      setTimeout(() => {
+      } else {
         reject(delay);
-      }, delay);
-    }
+      }
+    }, delay);
   });
 
   notificationPromise.then(
